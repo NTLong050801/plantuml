@@ -1,0 +1,238 @@
+@startuml
+left to right direction
+skinparam packageStyle package
+actor "Đơn vị" as dv
+actor "Quản trị" as qt
+actor "Chuyên viên, Lãnh đạo" as cvld
+actor "Lãnh đạo" as ld
+
+package "Quản lý dữ liệu ngành nông nghiệp" {
+    dv --> (Quản lý thông tin bài viết tin \n tức trồng trọt, chăn nuôi)
+    qt --> (Quản lý sản lượng \n lĩnh vực trồng trọt)
+    cvld --> (Quản lý sản lượng \n lĩnh vực chăn nuôi)
+    ld --> (Quản lý thông tin các đơn vị xí nghiệp,\n công ty xuất nhập khẩu trồng trọt,\n chăn nuôi)
+    ld --> (Quản lý thông tin dự báo thời tiết theo vùng)
+}
+
+newpage
+left to right direction
+actor "Chuyên viên, Lãnh đạo" as cvld
+package "Trang chủ" {
+    cvld --> (Trang chủ dành cho Lãnh đạo, chuyên viên)
+    cvld --> (Trang chủ dành cho người dân)
+}
+
+
+newpage
+left to right direction
+actor "Chuyên viên, Lãnh đạo" as cvld
+package "Bản đồ nông nghiệp" {
+    cvld --> (Xem thông tin nguồn nước trên bản đồ)
+    cvld --> (Xem thông tin khu vực trồng trọt trên bản đồ)
+    cvld --> (Xem thông tin khu vực chăn nuôi trên bản đồ)
+    cvld --> (Xem thông tin khu vực nuôi trồng thủy sản trên bản đồ)
+    cvld --> (Xem thông tin chi tiết thời tiết trên bản đồ)
+    cvld --> (Xem thông tin đơn vị, xí nghiệp trên bản đồ)
+}
+
+newpage
+left to right direction
+actor "Chuyên viên, Lãnh đạo" as cvld
+package "Báo cáo" {
+    cvld --> (Báo cáo thông tin sản lượng trồng trọt)
+    cvld --> (Báo cáo sản lượng chăn nuôi)
+}
+
+
+newpage
+left to right direction
+actor "Quản trị" as qt
+actor "Chuyên viên, Lãnh đạo" as cvld
+package "Quản trị hệ thống" {
+    qt --> (Quản trị người dùng)
+    cvld --> (Quản trị nhóm người dùng)
+    cvld --> (Quản trị theo vai trò người dùng,\n nhóm người dùng)
+    cvld --> (Chuyên viên đăng nhập,\n đăng xuất hệ thống)
+    cvld --> (Danh mục đơn vị hành chính)
+    cvld --> (Danh mục loại cây trồng trọt)
+    cvld --> (Danh mục loại vật nuôi)
+    cvld --> (Danh mục hình điều kiện thời tiết)
+    cvld --> (Quản lý lịch sử Hệ thống)
+}
+
+'PHÂN HỆ TRÊN NỀN TẢNG DI ĐỘNG
+newpage
+left to right direction
+skinparam packageStyle package
+actor "Chuyên viên, Lãnh đạo" as cvld
+package "Trang chủ" {
+    cvld --> (Trang chủ dành cho Lãnh đạo, chuyên viên)
+    cvld --> (Trang chủ dành cho người dân)
+}
+
+newpage
+left to right direction
+skinparam packageStyle package
+actor "Chuyên viên, Lãnh đạo" as cvld
+package "Bản đồ nông nghiệp" {
+    cvld --> (Xem thông tin nguồn nước trên bản đồ)
+    cvld --> (Xem thông tin khu vực trồng trên bản đồ)
+    cvld --> (Xem thông tin khu vực chăn nuôi trên bản đồ)
+    cvld --> (Xem thông tin chi tiết thời tiết trên bản đồ)
+    cvld --> (Xem thông tin đơn vị, xí nghiệp trên bản đồ)
+}
+
+newpage
+left to right direction
+skinparam packageStyle package
+actor "Chuyên viên, Lãnh đạo" as cvld
+package "Dashboard" {
+    cvld --> (Thống kê sản lượng chăn nuôi\n theo từng loại vật nuôi)
+    cvld --> (Thống kê sản lượng chăn nuôi\n theo từng khu vực đơn vị hành chính)
+    cvld --> (Thống kê sản lượng trồng trọt\n theo từng loại cây)
+    cvld --> (Thống kê sản lượng trồng trọt\n theo từng khu vực đơn vị hành chính)
+    cvld --> (Thống kê sản lượng xuất nhập khẩu\n của đơn vị, xí nghiệp)
+}
+'PHÂN HỆ NỀN TẢNG GIS DATA
+newpage
+left to right direction
+skinparam packageStyle package
+actor "Chuyên viên, Lãnh đạo" as cvld
+actor "Quản trị" as qt
+package "Quản lý lớp dữ liệu GIS" {
+    cvld --> (Thêm mới lớp dữ liệu không gian)
+    cvld --> (Cập nhật thông tin lớp dữ liệu không gian)
+    cvld --> (Xóa lớp dữ liệu không gian)
+    cvld --> (Tra cứu thông tin lớp dữ liệu không gian)
+    cvld --> (Nhập dữ liệu không gian dạng GML)
+    cvld --> (Nhập dữ liệu từ file shapefile)
+    cvld --> (Nhập dữ liệu từ file geodatabase)
+    cvld --> (Nhập dữ liệu từ file excel)
+    cvld --> (Nhập dữ liệu từ file CSV)
+    cvld --> (Export dữ liệu không gian)
+    qt --> (Thêm mới trường thông tin lớp dữ liệu)
+    qt --> (Cập nhật trường thông tin lớp dữ liệu)
+    cvld --> (Liên kết giá trị trường dữ liệu\n theo danh sách giá trị)
+    cvld --> (Liên kết giá trị trường dữ liệu\n theo danh mục dữ liệu)
+    cvld --> (Liên kết giá trị trường dữ liệu\n theo câu lệnh SQL)
+    cvld --> (Cấu hình biểu mẫu xem thông tin chi tiết)
+    cvld --> (Cấu hình biểu mẫu xem thông tin hiển thị trên bản đồ)
+    cvld --> (Cấu hình biểu mẫu trường thông tin\n cho phép tra cứu, tìm kiếm)
+    cvld --> (Cấu hình biểu mẫu trường thông tin\n hiển thị rút gọn)
+    cvld --> (Cấu hình biểu mẫu trường thông tin\n hiển thị chi tiết)
+    cvld --> (Cấu hình biểu mẫu trường thông tin\n hiển thị trên Mobile)
+}
+
+newpage
+left to right direction
+skinparam packageStyle package
+actor "Chuyên viên, Lãnh đạo" as cvld
+package "Công cụ biên tập dữ liệu" {
+    cvld --> (Thêm đối tượng không gian dạng điểm)
+    cvld --> (Thêm đối tượng không gian dạng polygon)
+    cvld --> (Thêm đối tượng không gian dạng hình tròn)
+    cvld --> (Thêm đối tượng không gian dạng hình chữ nhật)
+    cvld --> (Thêm đối tượng không gian dạng hình vuông)
+    cvld --> (Vẽ tiếp đối tượng không gian)
+    cvld --> (Cắt đối tượng không gian)
+    cvld --> (Sao chép song song đối tượng không gian)
+    cvld --> (Đảo chiều đối tượng không gian)
+    cvld --> (Sao chép đối tượng không gian)
+    cvld --> (Thiết lập bắt điểm đối tượng không gian)
+    cvld --> (Quản lý chế độ biên tập)
+    cvld --> (Quản lý nhóm lớp bản đồ)
+    cvld --> (Quản lý lớp bản đồ)
+    cvld --> (Cấu hình mức hiển thị lớp bản đồ)
+    cvld --> (Cấu hình mức hiển thị nhóm lớp bản đồ)
+    cvld --> (Cấu hình khung bản đồ)
+    cvld --> (Cấu hình hiển thị đối tượng lớp bản đồ)
+    cvld --> (Cấu hình trường thông tin hiển thị lớp bản đồ)
+    cvld --> (Cấu hình nhãn bản đồ)
+    cvld --> (Video tracking)
+    cvld --> (Streetview)
+}
+
+newpage
+left to right direction
+skinparam packageStyle package
+actor "Chuyên viên, Lãnh đạo" as cvld
+package "Quản trị bản đồ" {
+    cvld --> (Quản lý bản đồ)
+    cvld --> (Phân quyền bản đồ)
+    cvld --> (Sao chép bản đồ)
+    cvld --> (Chia sẻ bản đồ)
+    cvld --> (Gán lớp bản đồ nền)
+    cvld --> (Tra cứu bản đồ)
+}
+
+newpage
+left to right direction
+skinparam packageStyle package
+actor "Chuyên viên, Lãnh đạo" as cvld
+package "Tiện ích bản đồ" {
+    cvld --> (Đo diện tích)
+    cvld --> (Đo chiều dài)
+    cvld --> (In bản đồ)
+    cvld --> (Chụp ảnh bản đồ)
+    cvld --> (Lấy thông tin vị trí)
+    cvld --> (Xuất bản đồ)
+}
+
+newpage
+left to right direction
+skinparam packageStyle package
+actor "Chuyên viên, Lãnh đạo" as cvld
+package "Công cụ tìm kiếm" {
+    cvld --> (Tìm kiếm thông tin theo vị trí gần nhất)
+    cvld --> (Tìm kiếm thông tin theo đường cắt)
+    cvld --> (Tìm kiếm thông tin theo giao polygon)
+    cvld --> (Tìm kiếm thông tin theo giao hình tròn)
+    cvld --> (Tìm kiếm thông tin theo giao hình chữ nhật)
+}
+
+newpage
+left to right direction
+skinparam packageStyle package
+actor "Chuyên viên, Lãnh đạo" as cvld
+package "Quản trị chủ đề lớp dữ liệu" {
+    cvld --> (Tạo chủ đề dữ liệu)
+    cvld --> (Cập nhật chủ đề dữ liệu)
+    cvld --> (Sao chép chủ đề dữ liệu)
+}
+
+newpage
+left to right direction
+skinparam packageStyle package
+actor "Chuyên viên, Lãnh đạo" as cvld
+actor "Quản trị" as qt
+package "Quản trị dữ liệu thuộc tính" {
+    cvld --> (Quản lý lớp dữ liệu)
+    cvld --> (Nhập dữ liệu từ file excel)
+    cvld --> (Chia sẻ lớp dữ liệu cho tổ chức)
+    cvld --> (Quản lý dữ liệu lớp dữ liệu)
+    qt --> (Thêm mới trường thông tin lớp dữ liệu thuộc tính)
+    qt --> (Cập nhật trường thông tin lớp dữ liệu thuộc tính)
+    cvld --> (Liên kết giá trị trường dữ liệu\n lớp dữ liệu thuộc tính theo danh sách giá trị)
+    cvld --> (Liên kết giá trị trường dữ liệu\n thuộc tính theo danh mục dữ liệu)
+    cvld --> (Liên kết giá trị trường dữ liệu\n lớp dữ liệu thuộc tính theo câu lệnh SQL)
+    cvld --> (Cấu hình biểu mẫu xem thông tin chi\n tiết lớp dữ liệu thuộc tính)
+    cvld --> (Cấu hình biểu mẫu trường thông tin\n cho phép tra cứu, tìm kiếm lớp dữ liệu thuộc tính)
+    cvld --> (Cấu hình biểu mẫu trường thông tin\n hiển thị rút gọn lớp dữ liệu thuộc tính)
+    cvld --> (Cấu hình biểu mẫu trường thông tin\n hiển thị chi tiết dữ liệu lớp thuộc tính)
+    cvld --> (Cấu hình biểu mẫu trường thông tin\n hiển thị trên Mobile của lớp dữ liệu thuộc tính)
+    cvld --> (Phân quyền dữ liệu)
+}
+
+newpage
+left to right direction
+skinparam packageStyle package
+actor "Chuyên viên, Lãnh đạo" as cvld
+package "Quản trị báo cáo thống kê" {
+    cvld --> (Quản lý danh sách mẫu báo cáo)
+    cvld --> (Khai báo mẫu báo cáo)
+    cvld --> (Phân quyền mẫu báo cáo)
+    cvld --> (Xem thông tin tổng hợp dữ liệu báo cáo)
+
+}
+@enduml
+
